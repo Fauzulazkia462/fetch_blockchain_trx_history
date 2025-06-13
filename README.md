@@ -4,7 +4,7 @@
 run `npm install` on terminal.
 
 ## Set wallet address
-Set your wallet address for each of ETH, BTC, and SOL on `index.js`.
+Set your wallet address for each of ETH, BTC, and SOL in `index.js`.
 
 ## Run the app
 - `npm run fetch:eth` for eth.
@@ -12,4 +12,4 @@ Set your wallet address for each of ETH, BTC, and SOL on `index.js`.
 - `npm run fetch:sol` for sol.
 
 ## Data is saved
-Take a look at `Data/{chain}BlockchaintrxData` and enjoy you data 🍵.
+Take a look at `Data/{chain}BlockchaintrxData` and enjoy your data 🍵.
