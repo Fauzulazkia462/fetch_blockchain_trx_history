@@ -15,4 +15,4 @@ if your db runs on different port or credentials as declared in .env, update the
 - `npm run fetch:sol` for sol.
 
 ## Data is saved
-Take a look at `Data/{chain}BlockchaintrxData` and enjoy your data 🍵.
+Take a look at your table in your new created DB, and enjoy your data 🍵.
