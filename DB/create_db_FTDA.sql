@@ -29,12 +29,32 @@ CREATE SEQUENCE IF NOT EXISTS public."TB_BLOCKCHAIN_TRXS_ETH_ID_seq"
 -- Create table
 CREATE TABLE IF NOT EXISTS public."TB_BLOCKCHAIN_TRXS_ETH"
 (
-    "ID" integer NOT NULL DEFAULT nextval('public."TB_BLOCKCHAIN_TRXS_ETH_ID_seq"'::regclass),
+    "ID" integer NOT NULL DEFAULT nextval('"TB_BLOCKCHAIN_TRXS_ETH_ID_seq"'::regclass),
     "LOGS" jsonb,
     "CREATED_AT" timestamp with time zone DEFAULT now(),
     "TXDATA" jsonb,
+    "BLOCK_DATA" jsonb,
     CONSTRAINT "TB_BLOCKCHAIN_TRXS_ETH_pkey" PRIMARY KEY ("ID")
-);
+)
 
 ALTER TABLE IF EXISTS public."TB_BLOCKCHAIN_TRXS_ETH"
     OWNER TO postgres;
+
+
+-- Table: public.TB_BLOCKCHAIN_TRXS_SOL
+
+-- DROP TABLE IF EXISTS public."TB_BLOCKCHAIN_TRXS_SOL";
+
+CREATE TABLE IF NOT EXISTS public."TB_BLOCKCHAIN_TRXS_SOL"
+(
+    "ID" integer NOT NULL DEFAULT nextval('"TB_BLOCKCHAIN_TRXS_SOL_ID_seq"'::regclass),
+    "CREATED_AT" timestamp with time zone DEFAULT now(),
+    "TXDATA" jsonb,
+    "BLOCK_DATA" jsonb,
+    CONSTRAINT "TB_BLOCKCHAIN_TRXS_SOL_pkey" PRIMARY KEY ("ID")
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."TB_BLOCKCHAIN_TRXS_SOL"
+    OWNER to postgres;

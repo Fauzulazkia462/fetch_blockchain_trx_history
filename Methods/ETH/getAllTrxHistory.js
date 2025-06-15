@@ -57,6 +57,7 @@ async function getAllTrxHistory(N) {
                         transactionHash: tx.hash,
                         logs: receipt ? receipt.logs : [],
                         txData: tx,
+                        blockData: block,
                     });
 
                 } catch (err) {
