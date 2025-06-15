@@ -1,6 +1,3 @@
-const getBtc = require('./Methods/getBlockchainTrxHistoryBtc');
-const getSol = require('./Methods/getBlockchainTrxHistorySol');
-
 // ETH
 const getAllEthTrx = require('./Methods/ETH/getAllTrxHistory');
 const storeEthTrx = require('./Methods/ETH/storeTrxHistory');
@@ -9,8 +6,9 @@ const storeEthTrx = require('./Methods/ETH/storeTrxHistory');
 const getAllSolTrx = require('./Methods/SOL/getAllTrxHistory');
 const storeSolTrx = require('./Methods/SOL/storeTrxHistory');
 
+const getBtc = require('./Methods/getBlockchainTrxHistoryBtc');
+
 const BTC_ADDRESS = '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa';
-const SOL_ADDRESS = 'ATE1MynavZQhtoWfknT4P8ypRbNZHoReWS5Y9buqWxVE';
 
 const args = process.argv[2];
 
