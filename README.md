@@ -3,8 +3,11 @@
 ## Install dependencies
 run `npm install` on terminal.
 
-## Set wallet address
-Set your wallet address for each of ETH, BTC, and SOL in `index.js`.
+## Create the database
+Take the query from `DB/create_db_FTDA.sql` and run it on your postgree admin.
+
+## Setup .env
+if your db runs on different port or credentials as declared in .env, update the .env.
 
 ## Run the app
 - `npm run fetch:eth` for eth.
