@@ -6,9 +6,9 @@ const storeEthTrx = require('./Methods/ETH/storeTrxHistory');
 const getAllSolTrx = require('./Methods/SOL/getAllTrxHistory');
 const storeSolTrx = require('./Methods/SOL/storeTrxHistory');
 
-const getBtc = require('./Methods/getBlockchainTrxHistoryBtc');
-
-const BTC_ADDRESS = '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa';
+// BTC
+const getAllBtcTrx = require('./Methods/BTC/getAllTrxHistory');
+const storeBtcTrx = require('./Methods/BTC/storeTrxHistory');
 
 const args = process.argv[2];
 
@@ -20,7 +20,8 @@ const args = process.argv[2];
             break;
         }
         case 'btc':
-            await getBtc(BTC_ADDRESS);
+            const allReceipt = await getAllBtcTrx(0);
+            await storeBtcTrx(allReceipt);
             break;
         case 'sol':
             const allReceipts = await getAllSolTrx(0);

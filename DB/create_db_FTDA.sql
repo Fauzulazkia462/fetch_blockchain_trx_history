@@ -25,10 +25,10 @@ GRANT ALL ON SCHEMA public TO pg_database_owner;
 CREATE TABLE IF NOT EXISTS public."TB_BLOCKCHAIN_TRXS_ETH"
 (
     "ID" integer NOT NULL DEFAULT nextval('"TB_BLOCKCHAIN_TRXS_ETH_ID_seq"'::regclass),
-    "CREATED_AT" timestamp with time zone DEFAULT now(),
     "TXDATA" jsonb,
     "BLOCK_DATA" jsonb,
     "RECEIPT" jsonb,
+    "CREATED_AT" timestamp with time zone DEFAULT now(),
     CONSTRAINT "TB_BLOCKCHAIN_TRXS_ETH_pkey" PRIMARY KEY ("ID")
 )
 
@@ -45,13 +45,32 @@ ALTER TABLE IF EXISTS public."TB_BLOCKCHAIN_TRXS_ETH"
 CREATE TABLE IF NOT EXISTS public."TB_BLOCKCHAIN_TRXS_SOL"
 (
     "ID" integer NOT NULL DEFAULT nextval('"TB_BLOCKCHAIN_TRXS_SOL_ID_seq"'::regclass),
-    "CREATED_AT" timestamp with time zone DEFAULT now(),
     "TXDATA" jsonb,
     "BLOCK_DATA" jsonb,
+    "CREATED_AT" timestamp with time zone DEFAULT now(),
     CONSTRAINT "TB_BLOCKCHAIN_TRXS_SOL_pkey" PRIMARY KEY ("ID")
 )
 
 TABLESPACE pg_default;
 
 ALTER TABLE IF EXISTS public."TB_BLOCKCHAIN_TRXS_SOL"
+    OWNER to postgres;
+
+
+-- Table: public.TB_BLOCKCHAIN_TRXS_BTC
+
+-- DROP TABLE IF EXISTS public."TB_BLOCKCHAIN_TRXS_BTC";
+
+CREATE TABLE IF NOT EXISTS public."TB_BLOCKCHAIN_TRXS_BTC"
+(
+    "ID" integer NOT NULL DEFAULT nextval('"TB_BLOCKCHAIN_TRXS_BTC_ID_seq"'::regclass),
+    "TXDATA" jsonb,
+    "BLOCK_DATA" jsonb,
+    "CREATED_AT" timestamp with time zone DEFAULT now(),
+    CONSTRAINT "TB_BLOCKCHAIN_TRXS_BTC_pkey" PRIMARY KEY ("ID")
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."TB_BLOCKCHAIN_TRXS_BTC"
     OWNER to postgres;

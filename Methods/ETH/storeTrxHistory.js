@@ -1,5 +1,5 @@
 const connectToDb = require('../../DB/db_conn');
-const insertEthTrx = require('../../DB/Queries/ETH/insertTrx');
+const insertEthTrx = require('../../Queries/ETH/insertTrx');
 
 async function storeTrxHistory(allReceipts) {
     const pool = await connectToDb();
