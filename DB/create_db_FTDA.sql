@@ -18,27 +18,24 @@ COMMENT ON SCHEMA public IS 'standard public schema';
 GRANT USAGE ON SCHEMA public TO PUBLIC;
 GRANT ALL ON SCHEMA public TO pg_database_owner;
 
--- Create sequence
-CREATE SEQUENCE IF NOT EXISTS public."TB_BLOCKCHAIN_TRXS_ETH_ID_seq"
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+-- Table: public.TB_BLOCKCHAIN_TRXS_ETH
 
--- Create table
+-- DROP TABLE IF EXISTS public."TB_BLOCKCHAIN_TRXS_ETH";
+
 CREATE TABLE IF NOT EXISTS public."TB_BLOCKCHAIN_TRXS_ETH"
 (
     "ID" integer NOT NULL DEFAULT nextval('"TB_BLOCKCHAIN_TRXS_ETH_ID_seq"'::regclass),
-    "LOGS" jsonb,
     "CREATED_AT" timestamp with time zone DEFAULT now(),
     "TXDATA" jsonb,
     "BLOCK_DATA" jsonb,
+    "RECEIPT" jsonb,
     CONSTRAINT "TB_BLOCKCHAIN_TRXS_ETH_pkey" PRIMARY KEY ("ID")
 )
 
+TABLESPACE pg_default;
+
 ALTER TABLE IF EXISTS public."TB_BLOCKCHAIN_TRXS_ETH"
-    OWNER TO postgres;
+    OWNER to postgres;
 
 
 -- Table: public.TB_BLOCKCHAIN_TRXS_SOL

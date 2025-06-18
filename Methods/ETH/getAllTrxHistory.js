@@ -55,7 +55,7 @@ async function getAllTrxHistory(N) {
                     // Combine tx and receipt for complete data
                     allCombinedTxs.push({
                         transactionHash: tx.hash,
-                        logs: receipt ? receipt.logs : [],
+                        receipt: receipt ? receipt : [],
                         txData: tx,
                         blockData: block,
                     });
