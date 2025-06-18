@@ -1,6 +1,7 @@
 // ETH
 const getAllEthTrx = require('./Methods/ETH/getAllTrxHistory');
 const storeEthTrx = require('./Methods/ETH/storeTrxHistory');
+const getethCurrentGasFee = require('./Methods/ETH/getCurrentGasFee');
 
 // SOL
 const getAllSolTrx = require('./Methods/SOL/getAllTrxHistory');
@@ -15,6 +16,9 @@ const args = process.argv[2];
 (async () => {
     switch (args) {
         case 'eth': {
+            const gasFeeData = await getethCurrentGasFee();
+            const gasFee = gasFeeData.baseFeePerGas + gasFeeData.maxPriorityFeePerGas;
+            console.log("Gas Fee is", gasFee, "wei");
             const allReceipts = await getAllEthTrx(0);
             await storeEthTrx(allReceipts);
             break;
