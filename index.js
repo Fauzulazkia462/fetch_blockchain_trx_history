@@ -8,8 +8,11 @@ const getEthContractAbi = require('./Methods/ETH/getContractAbi');
 const storeEthContractAbi = require('./Utils/ETH/storeContractAbi');
 
 // BTC
-const getAllBtcTrx = require('./Methods/BTC/getAllTrxHistory');
-const storeBtcTrx = require('./Methods/BTC/storeTrxHistory');
+const getBtcCurrentFee = require('./Methods/BTC/getCurrentFee');
+const getBtcBlockHist = require('./Methods/BTC/getBtcBlockHist');
+const storeBtcBlockHist = require('./Utils/BTC/storeBlockTrxHistory');
+const getBtcWalletTrxHistory = require('./Methods/BTC/getWalletTrxHist');
+const storeBtcWalletHist = require('./Utils/BTC/storeWalletTrxHistory');
 
 const args = process.argv[2];
 
@@ -37,12 +40,24 @@ const args = process.argv[2];
 
             break;
         }
-        case 'btc':
-            const allReceipt = await getAllBtcTrx(0);
-            await storeBtcTrx(allReceipt);
+        case 'btc': {
+            // get current BTC fee rate
+            const btcFee = await getBtcCurrentFee();
+            console.log("BTC Fee rate is", btcFee, "sats/vByte");
+
+            // get and store data of certain block number
+            const btcBlockData = await getBtcBlockHist(808000);
+            await storeBtcBlockHist(btcBlockData);
+
+            // get and store data of certain wallet address
+            const btcWalletAddress = 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh';
+            const btcWalletHist = await getBtcWalletTrxHistory(btcWalletAddress);
+            await storeBtcWalletHist(btcWalletHist);
+
             break;
+        }
         default:
-            console.log('Usage: npm run fetch:eth|btc|sol');
+            console.log('Usage: npm run fetch:eth|btc');
     }
     process.exit(0);
 })();
