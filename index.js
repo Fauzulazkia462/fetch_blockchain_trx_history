@@ -7,10 +7,6 @@ const storeEthWalletHist = require('./Utils/ETH/storeWalletTrxHistory');
 const getEthContractAbi = require('./Methods/ETH/getContractAbi');
 const storeEthContractAbi = require('./Utils/ETH/storeContractAbi');
 
-// SOL
-const getAllSolTrx = require('./Methods/SOL/getAllTrxHistory');
-const storeSolTrx = require('./Methods/SOL/storeTrxHistory');
-
 // BTC
 const getAllBtcTrx = require('./Methods/BTC/getAllTrxHistory');
 const storeBtcTrx = require('./Methods/BTC/storeTrxHistory');
@@ -20,6 +16,7 @@ const args = process.argv[2];
 (async () => {
     switch (args) {
         case 'eth': {
+            // get current gas fee approximation
             const gasFeeData = await getEthCurrentGasFee();
             const gasFee = gasFeeData.baseFeePerGas + gasFeeData.maxPriorityFeePerGas;
             console.log("Gas Fee is", gasFee, "wei");
@@ -37,16 +34,12 @@ const args = process.argv[2];
             const contractAddress = '0xdAC17F958D2ee523a2206206994597C13D831ec7';
             const contractAbi = await getEthContractAbi(contractAddress);
             await storeEthContractAbi(contractAbi);
-                        
+
             break;
         }
         case 'btc':
             const allReceipt = await getAllBtcTrx(0);
             await storeBtcTrx(allReceipt);
-            break;
-        case 'sol':
-            const allReceipts = await getAllSolTrx(0);
-            await storeSolTrx(allReceipts);
             break;
         default:
             console.log('Usage: npm run fetch:eth|btc|sol');

@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "fetch:eth": "node index.js eth",
-    "fetch:btc": "node index.js btc",
-    "fetch:sol": "node index.js sol"
+    "fetch:btc": "node index.js btc"
   },
   "keywords": [],
   "author": "Fauzul Azkia",
